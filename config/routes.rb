@@ -2,5 +2,5 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :areas, except: [:show]
-  resources :customers
+  resources :customers, except: [:show]
 end
