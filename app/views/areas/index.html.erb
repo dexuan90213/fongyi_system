@@ -1,4 +1,4 @@
-<h1 class="title">區域列表</h1>
+<h2 class="title is-2">區域列表</h2>
 
 <%= link_to new_area_path, class: 'button is-primary' do %>
   <span class="icon is-small">
@@ -10,27 +10,27 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">地區名稱</th>
+      <th scope="col" class="is-size-5">地區名稱</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @areas.each do |area| %>
       <tr>
-        <td><%= area.name %></td>
+        <td class="is-size-5"><%= area.name %></td>
         <td>
           <%= link_to edit_area_path(area), class: 'button is-info is-small' do %>
             <span class="icon is-small">
               <i class="fas fa-edit"></i> 
             </span>
-            <span>編輯</span>
+            <span class="is-size-6">編輯</span>
           <% end %>
 
           <%= link_to area, method: 'delete', class: 'button is-danger is-small', data: { confirm: '確定要刪除嗎？' } do %>
             <span class="icon is-small">
               <i class="fas fa-trash-alt"></i>
             </span>
-            <span>刪除</span>
+            <span class="is-size-6">刪除</span>
           <% end %>
         </td>
       </tr>

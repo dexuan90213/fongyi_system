@@ -1,4 +1,4 @@
-<h1 class="title">客戶列表</h1>
+<h2 class="title is-2">客戶列表</h2>
 
 <%= link_to new_customer_path, class: 'button is-primary' do %>
   <span class="icon is-small">
@@ -10,33 +10,33 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">客戶名稱</th>
-      <th scope="col">所屬區域</th>
-      <th scope="col">聯絡電話</th>
-      <th scope="col">地址</th>
+      <th scope="col" class="is-size-5">客戶名稱</th>
+      <th scope="col" class="is-size-5">所屬區域</th>
+      <th scope="col" class="is-size-5">聯絡電話</th>
+      <th scope="col" class="is-size-5">地址</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.name %></td>
-        <td><%= customer.area.name %></td>
-        <td><%= customer.tel %></td>
-        <td><%= customer.address %></td>
+        <td class="is-size-5"><%= customer.name %></td>
+        <td class="is-size-5"><%= customer.area.name %></td>
+        <td class="is-size-5"><%= customer.tel %></td>
+        <td class="is-size-5"><%= customer.address %></td>
         <td>
           <%= link_to edit_customer_path(customer), class: 'button is-info is-small' do %>
             <span class="icon is-small">
               <i class="fas fa-edit"></i> 
             </span>
-            <span>編輯</span>
+            <span class="is-size-6">編輯</span>
           <% end %>
 
           <%= link_to customer, method: 'delete', class: 'button is-danger is-small', data: { confirm: '確定要刪除嗎？' } do %>
             <span class="icon is-small">
               <i class="fas fa-trash-alt"></i>
             </span>
-            <span>刪除</span>
+            <span class="is-size-6">刪除</span>
           <% end %>
         </td>
       </tr>
