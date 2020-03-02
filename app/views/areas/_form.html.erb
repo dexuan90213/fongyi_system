@@ -1,0 +1,31 @@
+<%= form_with model: area, local: true do |form| %>
+  <div class="field">
+    <%= form.label :name, '地區名稱', class: 'label is-medium'%>
+    <div class="control">
+      <%= form.text_field :name, placeholder: '請輸入地區名稱', class: 'input is-medium' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= form.button class: 'button is-primary is-medium' do %>
+        <span class="icon is-small">
+          <i class="fas fa-save"></i>
+        </span>
+        <span>儲存</span>
+      <% end %>
+
+      <%= link_to areas_path, class: 'button is-light is-medium' do %>
+        <span class="icon is-small">
+          <i class="fas fa-undo"></i>
+        </span>
+        <span>返回</span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+    </div>
+  </div>
+<% end %>
