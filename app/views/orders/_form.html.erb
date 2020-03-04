@@ -1,0 +1,51 @@
+<%= form_with model: order, local: true do |form| %>
+
+  <div class="field">
+    <%= form.label :delivered_at, '出貨日期', class: 'label' %>
+    <div class="control">
+      <%= form.date_field :delivered_at, required: true, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :number, '訂單編號', class: 'label' %>
+    <div class="control">
+      <%= form.text_field :number, maxlength: 6, required: true, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_id, '客戶', class: 'label' %>
+    <div class="control">
+      <div class="select is-fullwidth">
+        <%= form.collection_select :customer_id, Customer.order(id: :asc), :id, :name, { prompt: '--- 請選擇客戶 ---' }, required: true %>
+        <%# <%= form.grouped_collection_select :customer_id, Area.order(id: :asc), :customers, :name, :id, :name, prompt: '--- 請選擇客戶 ---' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :note, '備註欄', class: 'label' %>
+    <div class="control">
+      <%= form.text_area :note, rows: 5, placeholder: '選填', class: 'textarea' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= form.button class: 'button is-primary is-medium' do %>
+        <span class="icon is-small">
+          <i class="fas fa-save"></i>
+        </span>
+        <span>儲存</span>
+      <% end %>
+
+      <%= link_to customers_path, class: 'button is-light is-medium' do %>
+        <span class="icon is-small">
+          <i class="fas fa-undo"></i>
+        </span>
+        <span>返回</span>
+      <% end %>
+    </div>
+  </div>
+<% end %>

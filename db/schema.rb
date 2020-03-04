@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_053428) do
+ActiveRecord::Schema.define(version: 2020_03_04_163920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,33 @@ ActiveRecord::Schema.define(version: 2020_03_04_053428) do
     t.index ["area_id"], name: "index_customers_on_area_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "number"
+    t.bigint "customer_id", null: false
+    t.date "delivered_at"
+    t.decimal "receivable"
+    t.decimal "paid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "aasm_state"
+    t.datetime "deleted_at"
+    t.text "note"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["deleted_at"], name: "index_orders_on_deleted_at"
+    t.index ["delivered_at"], name: "index_orders_on_delivered_at"
+    t.index ["number"], name: "index_orders_on_number", unique: true
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "product_id", null: false
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_prices_on_customer_id"
+    t.index ["product_id"], name: "index_prices_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "list_price"
@@ -54,4 +81,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_053428) do
   end
 
   add_foreign_key "customers", "areas"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "prices", "customers"
+  add_foreign_key "prices", "products"
 end
