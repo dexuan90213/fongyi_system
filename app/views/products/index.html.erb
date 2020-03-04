@@ -1,0 +1,41 @@
+<h2 class="title is-2">商品列表</h2>
+
+<%= link_to new_product_path, class: 'button is-primary' do %>
+  <span class="icon is-small">
+    <i class="fas fa-plus"></i>
+  </span>
+  <span>新增商品</span>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="is-size-5">商品名稱</th>
+      <th scope="col" class="is-size-5">定價</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td class="is-size-5"><%= product.name %></td>
+        <td class="is-size-5"><%= product.list_price %></td>
+        <td>
+          <%= link_to edit_product_path(product), class: 'button is-info is-small' do %>
+            <span class="icon is-small">
+              <i class="fas fa-edit"></i> 
+            </span>
+            <span class="is-size-6">編輯</span>
+          <% end %>
+
+          <%= link_to product, method: 'delete', class: 'button is-danger is-small', data: { confirm: '確定要刪除嗎？' } do %>
+            <span class="icon is-small">
+              <i class="fas fa-trash-alt"></i>
+            </span>
+            <span class="is-size-6">刪除</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
