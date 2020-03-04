@@ -2,7 +2,7 @@ class AreasController < ApplicationController
   before_action :find_area, only: [:edit, :update, :destroy]
 
   def index
-    @areas = Area.all
+    @areas = Area.order(id: :asc)
   end
 
   def new

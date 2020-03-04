@@ -30,6 +30,24 @@
   </div>
 
   <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <%= form.check_box :cash_payment, class: 'checkbox' %>
+          現金付款（未勾選則預設為月結）
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <%= form.check_box :close_day_at_25th, class: 'checkbox' %>
+          每月25號結算
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
     <%= form.label :note, '備註欄', class: 'label' %>
     <div class="control">
       <%= form.text_area :note, rows: 5, placeholder: '選填', class: 'textarea' %>

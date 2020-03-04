@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :find_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = Customer.all
+    @customers = Customer.order(id: :asc)
   end
 
   def new
@@ -46,6 +46,8 @@ class CustomersController < ApplicationController
                                      :area_id,
                                      :tel,
                                      :address,
+                                     :cash_payment,
+                                     :close_day_at_25th,
                                      :note)
   end
 end
