@@ -6,3 +6,5 @@
 
 ## Gems:
 - Devise
+- AASM
+- paranoia
