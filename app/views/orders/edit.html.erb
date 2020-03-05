@@ -1,7 +1,8 @@
 <div class="columns is-centered">
   <div class="column is-four-fifths">
     <h2 class="title">訂單狀態
-      <%= content_tag :span, @order.aasm_state, class: "tag is-medium is-warning" %>
+      <%= content_tag :span, '待出貨', class: "tag is-medium" if @order.pending? %>
+      <%= content_tag :span, '已出貨', class: "tag is-medium is-info" if @order.delivered? %>
     </h2>
     <%= render 'form', order: @order %>
   </div>

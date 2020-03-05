@@ -3,14 +3,14 @@
   <div class="field">
     <%= form.label :delivered_at, '出貨日期', class: 'label' %>
     <div class="control">
-      <%= form.date_field :delivered_at, required: true, class: 'input' %>
+      <%= form.date_field :delivered_at, required: true, class: 'input', disabled: !order.pending? %>
     </div>
   </div>
 
   <div class="field">
     <%= form.label :number, '訂單編號', class: 'label' %>
     <div class="control">
-      <%= form.text_field :number, maxlength: 6, required: true, class: 'input' %>
+      <%= form.text_field :number, maxlength: 6, required: true, class: 'input', disabled: !order.pending? %>
     </div>
   </div>
 
@@ -18,7 +18,7 @@
     <%= form.label :customer_id, '客戶', class: 'label' %>
     <div class="control">
       <div class="select is-fullwidth">
-        <%= form.collection_select :customer_id, Customer.order(id: :asc), :id, :name, { prompt: '--- 請選擇客戶 ---' }, required: true %>
+        <%= form.collection_select :customer_id, Customer.order(id: :asc), :id, :name, { prompt: '--- 請選擇客戶 ---' }, required: true, disabled: !order.pending? %>
         <%# <%= form.grouped_collection_select :customer_id, Area.order(id: :asc), :customers, :name, :id, :name, prompt: '--- 請選擇客戶 ---' %>
       </div>
     </div>

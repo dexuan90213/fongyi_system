@@ -45,9 +45,14 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:delivered_at,
-                                  :number,
-                                  :customer_id,
-                                  :note)
+    case 
+    when @order.nil? || @order.pending?
+      params.require(:order).permit(:delivered_at,
+                                    :number,
+                                    :customer_id,
+                                    :note)
+    when @order.delivered?
+      params.require(:order).permit(:note)
+    end
   end
 end
