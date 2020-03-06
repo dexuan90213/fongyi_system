@@ -1,0 +1,49 @@
+<div class="nested-fields field">
+  <div class="field-body">
+    <div class="field-label is-normal">
+      <label class="label"><%= form.index + 1 %></label>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= form.collection_select :product_id, Product.order(id: :asc), :id, :name, { prompt: '請選擇商品' }, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= form.number_field :quantity, placeholder: '數量', required: true, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <label class="radio">
+          <%= form.radio_button :unit, 0 %> 箱
+        </label>
+        <label class="radio">
+          <%= form.radio_button :unit, 1 %> 桌
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= form.number_field :total_quantity, placeholder: '總數量', required: true, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= form.number_field :price, placeholder: '單價', required: true, class: 'input', step: :any %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= form.number_field :total_price, placeholder: '單項總價', required: true, class: 'input' %>
+      </div>
+    </div>
+
+  </div>
+</div>

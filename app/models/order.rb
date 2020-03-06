@@ -3,6 +3,8 @@ class Order < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :customer
+  has_many :items, dependent: :destroy
+  accepts_nested_attributes_for :items, reject_if: :all_blank, allow_destroy: true
 
   validates :number, :delivered_at, presence: true
   validates :number, length: { is: 6 }, uniqueness: true

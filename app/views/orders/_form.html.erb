@@ -24,6 +24,10 @@
     </div>
   </div>
 
+  <%= form.fields_for :items do |item| %>
+    <%= render 'item_fields', form: item %>
+  <% end %>
+
   <div class="field">
     <%= form.label :note, '備註欄', class: 'label' %>
     <div class="control">

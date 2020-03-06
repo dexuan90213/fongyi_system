@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.items.build
   end
 
   def create
@@ -50,7 +51,17 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:delivered_at,
                                     :number,
                                     :customer_id,
-                                    :note)
+                                    :note,
+                                    items_attributes: [
+                                      :id,
+                                      :product_id,
+                                      :quantity,
+                                      :unit,
+                                      :price,
+                                      :total_quantity,
+                                      :total_price,
+                                      :_destroy
+                                    ])
     when @order.delivered?
       params.require(:order).permit(:note)
     end
