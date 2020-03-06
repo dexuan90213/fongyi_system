@@ -3,7 +3,7 @@
   <div class="field">
     <%= form.label :delivered_at, '出貨日期', class: 'label' %>
     <div class="control">
-      <%= form.date_field :delivered_at, required: true, class: 'input', disabled: !order.pending? %>
+      <%= form.date_field :delivered_at, value: Date.today, required: true, class: 'input', disabled: !order.pending? %>
     </div>
   </div>
 
@@ -24,9 +24,24 @@
     </div>
   </div>
 
-  <%= form.fields_for :items do |item| %>
-    <%= render 'item_fields', form: item %>
-  <% end %>
+  <div class="fields" data-controller="item-form">
+
+    <template data-target="item-form.template">
+      <%= form.fields_for :items, Item.new, child_index: 'TEMPLATE_RECORD' do |item| %>
+        <%= render 'item_fields', form: item %>
+      <% end %>
+    </template>
+
+    <%= form.fields_for :items do |item| %>
+      <%= render 'item_fields', form: item %>
+    <% end %>
+
+    <div data-target="item-form.add_button">
+      
+    </div>
+    <%= link_to '新增項目', '#', class: 'button', data: { action: 'item-form#addItem' } %>
+
+  </div>
 
   <div class="field">
     <%= form.label :note, '備註欄', class: 'label' %>

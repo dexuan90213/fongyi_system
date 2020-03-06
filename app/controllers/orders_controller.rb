@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.order(id: :asc)
+    @orders = Order.order(id: :asc).includes(:customer)
   end
 
   def show

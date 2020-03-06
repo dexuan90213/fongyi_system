@@ -1,12 +1,14 @@
-<div class="nested-fields field">
+<div class="nested-fields">
   <div class="field-body">
     <div class="field-label is-normal">
-      <label class="label"><%= form.index + 1 %></label>
+      <label class="label"><%= form.index.to_i + 1 %></label>
     </div>
 
     <div class="field">
       <div class="control">
-        <%= form.collection_select :product_id, Product.order(id: :asc), :id, :name, { prompt: '請選擇商品' }, class: 'input' %>
+        <div class="select">
+          <%= form.collection_select :product_id, Product.order(id: :asc), :id, :name, { prompt: '請選擇商品' } %>
+        </div>
       </div>
     </div>
 
@@ -18,12 +20,9 @@
 
     <div class="field">
       <div class="control">
-        <label class="radio">
-          <%= form.radio_button :unit, 0 %> 箱
-        </label>
-        <label class="radio">
-          <%= form.radio_button :unit, 1 %> 桌
-        </label>
+        <div class="select">
+          <%= form.select :unit, [ ['箱', 0], ['桌', 1] ] %>
+        </div>
       </div>
     </div>
 
