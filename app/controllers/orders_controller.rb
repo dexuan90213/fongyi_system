@@ -10,6 +10,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    new_number = (Order.with_deleted.maximum(:number).to_i + 1).to_s.rjust(6, '0')
+    @order.number = new_number
     @order.items.build
   end
 
@@ -36,7 +38,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
-    redirect_to orders_path, notice: '訂單已作廢'
+    redirect_to orders_path, notice: '訂單已刪除'
   end
 
   private

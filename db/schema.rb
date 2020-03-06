@@ -67,16 +67,6 @@ ActiveRecord::Schema.define(version: 2020_03_06_142401) do
     t.index ["number"], name: "index_orders_on_number", unique: true
   end
 
-  create_table "prices", force: :cascade do |t|
-    t.bigint "customer_id", null: false
-    t.bigint "product_id", null: false
-    t.decimal "price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_prices_on_customer_id"
-    t.index ["product_id"], name: "index_prices_on_product_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "list_price"
@@ -100,6 +90,4 @@ ActiveRecord::Schema.define(version: 2020_03_06_142401) do
   add_foreign_key "items", "orders"
   add_foreign_key "items", "products"
   add_foreign_key "orders", "customers"
-  add_foreign_key "prices", "customers"
-  add_foreign_key "prices", "products"
 end
