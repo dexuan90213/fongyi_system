@@ -62,13 +62,11 @@
         </span>
         <span>儲存</span>
       <% end %>
-
-      <%= link_to customers_path, class: 'button is-light is-medium' do %>
-        <span class="icon is-small">
-          <i class="fas fa-undo"></i>
-        </span>
-        <span>返回</span>
-      <% end %>
     </div>
   </div>
+
+  <%= form.fields_for :prices do |p| %>
+    <%= p.collection_select :product_id, Product.order(id: :asc), :id, :name, selected: p.index.to_i + 1 %>
+    <%= p.number_field :price %>
+  <% end %>
 <% end %>

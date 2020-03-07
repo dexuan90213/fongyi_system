@@ -7,6 +7,7 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
+    Product.all.size.times { @customer.prices.build }
   end
 
   def create
@@ -48,6 +49,7 @@ class CustomersController < ApplicationController
                                      :address,
                                      :cash_payment,
                                      :close_day_at_25th,
-                                     :note)
+                                     :note,
+                                     prices_attributes: [:id, :product_id, :price])
   end
 end
