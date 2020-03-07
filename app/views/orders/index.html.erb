@@ -22,10 +22,10 @@
   </div>
 </nav>
 
-<table class="table">
+<table class="table is-fullwidth">
   <thead>
     <tr>
-      <th scope="col" class="is-size-5">編號</th>
+      <th scope="col" class="is-size-5">訂單編號</th>
       <th scope="col" class="is-size-5">日期</th>
       <th scope="col" class="is-size-5">客戶</th>
       <th scope="col" class="is-size-5">狀態</th>
@@ -44,18 +44,11 @@
         <td class="is-size-5"><%= order.receivable %></td>
         <td class="is-size-5"><%= order.paid %></td>
         <td>
-          <%= link_to edit_order_path(order), class: 'button is-info is-small' do %>
+          <%= link_to edit_order_path(order), class: 'button is-info' do %>
             <span class="icon is-small">
               <i class="fas fa-edit"></i>
             </span>
             <span class="is-size-6">編輯</span>
-          <% end %>
-
-          <%= link_to order, method: 'delete', class: 'button is-danger is-small', data: { confirm: '確定要刪除嗎？' } do %>
-            <span class="icon is-small">
-              <i class="fas fa-trash-alt"></i>
-            </span>
-            <span class="is-size-6">刪除</span>
           <% end %>
         </td>
       </tr>

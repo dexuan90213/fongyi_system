@@ -1,11 +1,8 @@
 class OrdersController < ApplicationController
-  before_action :find_order, only: [:show, :edit, :update, :destroy]
+  before_action :find_order, only: [:edit, :update, :destroy]
 
   def index
     @orders = Order.order(id: :asc).includes(:customer)
-  end
-
-  def show
   end
 
   def new
@@ -30,7 +27,7 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
-      redirect_to orders_path, notice: '訂單更新成功'
+      redirect_to edit_order_path(@order), notice: '訂單更新成功'
     else
       render :edit
     end

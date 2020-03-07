@@ -1,8 +1,10 @@
-<div class="nested-fields">
+<div class="nested-fields" data-new-record="<%= form.object.new_record? %>">
   <div class="field-body">
     <div class="field-label is-normal">
       <label class="label"><%= form.index.to_i + 1 %></label>
     </div>
+
+    <%= form.hidden_field :_destroy %>
 
     <div class="field">
       <div class="control">
@@ -41,6 +43,12 @@
     <div class="field">
       <div class="control">
         <%= form.number_field :total_price, placeholder: '單項總價', required: true, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <%= link_to '刪除', '#', class: 'button is-danger', data: { action: 'item-form#removeItem' } %>
       </div>
     </div>
 
